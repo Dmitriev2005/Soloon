@@ -26,7 +26,7 @@ namespace Soloon
         public double Cost { get; set; }
         public int DurationInSeconds { get; set; }
         public string Description { get; set; }
-        public Nullable<double> Discount { get; set; }
+        public string Discount { get; set; }
         public string MainImagePath { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

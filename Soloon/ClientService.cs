@@ -11,7 +11,8 @@ namespace Soloon
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.Linq;
+
     public partial class ClientService
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -33,5 +34,43 @@ namespace Soloon
         public virtual ICollection<DocumentByService> DocumentByServices { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ProductSale> ProductSales { get; set; }
+
+
+        ////////
+        public string ClientStr
+        {
+            get
+            {
+                if (ClientID != 0)
+                {
+                    if(App.DB.Clients.Any(q => q.ID.Equals(ClientID)))
+                    {
+                        Client client = App.DB.Clients.Single(q => q.ID.Equals(ClientID));
+
+                        return client.LastName + " " + client.FirstName + " " + client.Patronymic;
+                    }
+                    return "";  
+                }
+                return "";
+            }
+            
+        }
+        public string ServiceStr
+        {
+            get
+            {
+                if(ServiceID != 0)
+                {
+                    if(App.DB.Services.Any(q => q.ID.Equals(ServiceID)))
+                    {
+                        return App.DB.Services.Single(q=>q.ID.Equals(ServiceID)).Title;
+
+                    }
+                    return "";
+                }
+                return "";
+            }
+        }
+
     }
 }

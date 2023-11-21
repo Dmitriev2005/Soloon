@@ -100,7 +100,7 @@
           <Property Name="Cost" Type="float" Nullable="false" />
           <Property Name="DurationInSeconds" Type="int" Nullable="false" />
           <Property Name="Description" Type="nvarchar(max)" />
-          <Property Name="Discount" Type="float" />
+          <Property Name="Discount" Type="varchar" MaxLength="50" />
           <Property Name="MainImagePath" Type="nvarchar" MaxLength="1000" />
         </EntityType>
         <EntityType Name="ServicePhoto">
@@ -471,7 +471,7 @@
           <Property Name="Cost" Type="Double" Nullable="false" />
           <Property Name="DurationInSeconds" Type="Int32" Nullable="false" />
           <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Discount" Type="Double" />
+          <Property Name="Discount" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="MainImagePath" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="ClientServices" Relationship="Self.FK_ClientService_Service" FromRole="Service" ToRole="ClientService" />
           <NavigationProperty Name="ServicePhotoes" Relationship="Self.FK_ServicePhoto_Service" FromRole="Service" ToRole="ServicePhoto" />
@@ -620,7 +620,7 @@
           <End Role="Client" Type="Self.Client" Multiplicity="*" />
           <End Role="Tag" Type="Self.Tag" Multiplicity="*" />
         </Association>
-        <EntityContainer Name="SoloonEntities1" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="SoloonEntities2" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Clients" EntityType="Self.Client" />
           <EntitySet Name="ClientServices" EntityType="Self.ClientService" />
           <EntitySet Name="DocumentByServices" EntityType="Self.DocumentByService" />
@@ -683,7 +683,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="SoloonModelStoreContainer" CdmEntityContainer="SoloonEntities1">
+        <EntityContainerMapping StorageEntityContainer="SoloonModelStoreContainer" CdmEntityContainer="SoloonEntities2">
           <EntitySetMapping Name="Clients">
             <EntityTypeMapping TypeName="SoloonModel.Client">
               <MappingFragment StoreEntitySet="Client">

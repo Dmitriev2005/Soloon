@@ -23,8 +23,63 @@ namespace Soloon
         public MainWindow()
         {
             InitializeComponent();
+            RefreshAll();
+        }
+
+        private void btnAdd_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnEdit_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnDelete_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnAddClient_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnEditClient_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnDeleteClient_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void RefreshAll()
+        {
             dgServise.ItemsSource = null;
             dgServise.ItemsSource = App.DB.Services.ToList();
+
+            dgClient.ItemsSource = null;
+            dgClient.ItemsSource = App.DB.Clients.ToList();
+
+            dgClientService.ItemsSource = null;
+            dgClientService.ItemsSource = App.DB.ClientServices.ToList();
+        }
+
+        private void btnAddClientService_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnEditClientService_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnDeleteClientService_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
