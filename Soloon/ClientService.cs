@@ -34,43 +34,48 @@ namespace Soloon
         public virtual ICollection<DocumentByService> DocumentByServices { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ProductSale> ProductSales { get; set; }
-
-
-        ////////
+        ////////////////
+        ///
         public string ClientStr
         {
             get
             {
-                if (ClientID != 0)
-                {
-                    if(App.DB.Clients.Any(q => q.ID.Equals(ClientID)))
+                if(ClientID!=0)
+                    if (App.DB.Clients.Any(q => q.ID.Equals(ClientID)))
                     {
-                        Client client = App.DB.Clients.Single(q => q.ID.Equals(ClientID));
 
-                        return client.LastName + " " + client.FirstName + " " + client.Patronymic;
+                        Client client = App.DB.Clients.Single(q => q.ID.Equals(ClientID));
+                        return client.LastName + " " + client.FirstName +" "+ client.Patronymic;
                     }
-                    return "";  
-                }
                 return "";
             }
-            
+            set
+            {
+                List<string> ar = value.Split(' ').ToList();
+                Client client = new Client();
+                client.LastName = ar[0];
+                client.FirstName = ar[1];
+                client.Patronymic = ar[2];
+                ClientID = App.DB.Clients.Single(q => (q.LastName == client.LastName && q.FirstName == client.FirstName && q.Patronymic == client.Patronymic)).ID;
+            }
         }
         public string ServiceStr
         {
             get
             {
-                if(ServiceID != 0)
-                {
-                    if(App.DB.Services.Any(q => q.ID.Equals(ServiceID)))
+                if (ServiceID != 0)
+                    if (App.DB.Services.Any(q => q.ID.Equals(ServiceID)))
                     {
-                        return App.DB.Services.Single(q=>q.ID.Equals(ServiceID)).Title;
 
+                        return App.DB.Services.Single(q=> q.ID.Equals(ServiceID)).Title;
                     }
-                    return "";
-                }
                 return "";
             }
+            set
+            {
+                ServiceID = App.DB.Services.Single(q=>q.Title.Equals(value)).ID;
+            }
         }
-
     }
+   
 }

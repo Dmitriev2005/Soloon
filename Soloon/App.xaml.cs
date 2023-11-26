@@ -14,6 +14,6 @@ namespace Soloon
     /// </summary>
     public partial class App : Application
     {
-        public static SoloonEntities2 DB = new SoloonEntities2();
+        public static SoloonEntities3 DB = new SoloonEntities3();
     }
 }

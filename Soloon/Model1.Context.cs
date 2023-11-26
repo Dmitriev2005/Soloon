@@ -13,10 +13,10 @@ namespace Soloon
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class SoloonEntities2 : DbContext
+    public partial class SoloonEntities3 : DbContext
     {
-        public SoloonEntities2()
-            : base("name=SoloonEntities2")
+        public SoloonEntities3()
+            : base("name=SoloonEntities3")
         {
         }
     
